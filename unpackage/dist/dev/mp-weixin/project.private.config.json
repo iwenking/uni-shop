@@ -5,5 +5,18 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "2.33.0"
+  "libVersion": "2.33.0",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "分类",
+          "pathName": "pages/cate/cate",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
 }
