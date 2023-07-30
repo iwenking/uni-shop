@@ -22,6 +22,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "商品列表",
+          "pathName": "subpkg/goods_list/goods_list",
+          "query": "cid=6",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "商品详情",
+          "pathName": "subpkg/goods_detail/goods_detail",
+          "query": "goods_id=395",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
