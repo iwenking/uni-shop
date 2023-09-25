@@ -131,7 +131,6 @@ exports.default = void 0;
 //
 //
 //
-//
 /**
  * NumberBox 数字输入框
  * @description 带加减按钮的数字输入框
@@ -148,7 +147,7 @@ exports.default = void 0;
  * @event {Function} blur 输入框失焦时触发的事件，参数为 event 对象
  */
 var _default = {
-  name: "UniNumberBox",
+  name: 'UniNumberBox',
   emits: ['change', 'input', 'update:modelValue', 'blur', 'focus'],
   props: {
     value: {
@@ -213,7 +212,7 @@ var _default = {
       var scale = this._getDecimalScale();
       var value = this.inputValue * scale;
       var step = this.step * scale;
-      if (type === "minus") {
+      if (type === 'minus') {
         value -= step;
         if (value < this.min * scale) {
           return;
@@ -222,7 +221,7 @@ var _default = {
           value = this.max * scale;
         }
       }
-      if (type === "plus") {
+      if (type === 'plus') {
         value += step;
         if (value > this.max * scale) {
           return;
@@ -233,22 +232,27 @@ var _default = {
       }
       this.inputValue = (value / scale).toFixed(String(scale).length - 1);
       // TODO vue2 兼容
-      this.$emit("input", +this.inputValue);
+      this.$emit('input', +this.inputValue);
       // TODO vue3 兼容
-      this.$emit("update:modelValue", +this.inputValue);
-      this.$emit("change", +this.inputValue);
+      this.$emit('update:modelValue', +this.inputValue);
+      this.$emit('change', +this.inputValue);
     },
     _getDecimalScale: function _getDecimalScale() {
       var scale = 1;
       // 浮点型
       if (~~this.step !== this.step) {
-        scale = Math.pow(10, String(this.step).split(".")[1].length);
+        scale = Math.pow(10, String(this.step).split('.')[1].length);
       }
       return scale;
     },
     _onBlur: function _onBlur(event) {
       this.$emit('blur', event);
-      var value = event.detail.value;
+      // let value = event.detail.value;
+      var value = parseInt(event.detail.value);
+      if (!value) {
+        this.inputValue = 1;
+        return;
+      }
       if (isNaN(value)) {
         this.inputValue = this.min;
         return;
@@ -261,9 +265,9 @@ var _default = {
       }
       var scale = this._getDecimalScale();
       this.inputValue = value.toFixed(String(scale).length - 1);
-      this.$emit("input", +this.inputValue);
-      this.$emit("update:modelValue", +this.inputValue);
-      this.$emit("change", +this.inputValue);
+      this.$emit('input', +this.inputValue);
+      this.$emit('update:modelValue', +this.inputValue);
+      this.$emit('change', +this.inputValue);
     },
     _onFocus: function _onFocus(event) {
       this.$emit('focus', event);

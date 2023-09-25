@@ -24,40 +24,53 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.goods-item {
+.uni-swipe {
+  position: relative;
+  overflow: hidden;
+}
+.uni-swipe_box {
   display: flex;
-  padding: 10px 5px;
-  border-bottom: 1px solid #f0f0f0;
-  width: 750rpx;
+  flex-shrink: 0;
+  position: relative;
+}
+.uni-swipe_text--center {
+  width: 100%;
+  cursor: grab;
+}
+.uni-swipe_button-group {
   box-sizing: border-box;
-}
-.goods-item .goods-item-left {
-  margin-right: 5px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.button-group--left {
+  left: 0;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.button-group--right {
+  right: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.uni-swipe_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  padding: 0 20px;
 }
-.goods-item .goods-item-left .goods-pic {
-  width: 100px;
-  height: 100px;
-  display: block;
+.uni-swipe_button-text {
+  flex-shrink: 0;
+  font-size: 14px;
 }
-.goods-item .goods-item-right {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.goods-item .goods-item-right .goods-name {
-  font-size: 13px;
-}
-.goods-item .goods-item-right .goods-info-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.goods-item .goods-item-right .goods-info-box .goods-price {
-  color: #c00000;
-  font-size: 16px;
+.ani {
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 

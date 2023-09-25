@@ -24,40 +24,39 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.goods-item {
-  display: flex;
-  padding: 10px 5px;
-  border-bottom: 1px solid #f0f0f0;
-  width: 750rpx;
-  box-sizing: border-box;
-}
-.goods-item .goods-item-left {
-  margin-right: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.goods-item .goods-item-left .goods-pic {
-  width: 100px;
-  height: 100px;
+.address-border {
   display: block;
+  width: 100%;
+  height: 5px;
 }
-.goods-item .goods-item-right {
+.address-choose-box {
+  height: 90px;
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.goods-item .goods-item-right .goods-name {
-  font-size: 13px;
-}
-.goods-item .goods-item-right .goods-info-box {
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
-.goods-item .goods-item-right .goods-info-box .goods-price {
-  color: #c00000;
-  font-size: 16px;
+.address-info-box {
+  font-size: 12px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5px;
+}
+.address-info-box .row1 {
+  display: flex;
+  justify-content: space-between;
+}
+.address-info-box .row1 .row1-right {
+  display: flex;
+  justify-content: space-between;
+}
+.address-info-box .row2 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.address-info-box .row2 .row2-left {
+  white-space: nowrap;
 }
 

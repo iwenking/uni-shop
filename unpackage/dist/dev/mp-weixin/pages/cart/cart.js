@@ -100,8 +100,17 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    myAddress: function () {
+      return Promise.all(/*! import() | components/my-address/my-address */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/my-address/my-address")]).then(__webpack_require__.bind(null, /*! @/components/my-address/my-address.vue */ 183))
+    },
     uniIcons: function () {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 101))
+    },
+    uniSwipeAction: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action */ "uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action.vue */ 164))
+    },
+    uniSwipeActionItem: function () {
+      return Promise.all(/*! import() | uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item.vue */ 169))
     },
     myGoods: function () {
       return __webpack_require__.e(/*! import() | components/my-goods/my-goods */ "components/my-goods/my-goods").then(__webpack_require__.bind(null, /*! @/components/my-goods/my-goods.vue */ 109))
@@ -177,14 +186,24 @@ var _default = {
   mixins: [_tabbarBadge.default],
   computed: _objectSpread({}, (0, _vuex.mapState)('m_cart', ['cart'])),
   data: function data() {
-    return {};
+    return {
+      options: [{
+        text: '删除',
+        style: {
+          backgroundColor: '#c00000'
+        }
+      }]
+    };
   },
-  methods: _objectSpread(_objectSpread({}, (0, _vuex.mapMutations)('m_cart', ['updateGoodsState'])), {}, {
+  methods: _objectSpread(_objectSpread({}, (0, _vuex.mapMutations)('m_cart', ['updateGoodsState', 'updateGoodsCount', 'removeGoodsById'])), {}, {
     radioChangeHandler: function radioChangeHandler(e) {
       this.updateGoodsState(e);
     },
     numChangeHandler: function numChangeHandler(e) {
-      console.log(e);
+      this.updateGoodsCount(e);
+    },
+    swipeItemClickHandler: function swipeItemClickHandler(goods) {
+      this.removeGoodsById(goods.goods_id);
     }
   })
 };

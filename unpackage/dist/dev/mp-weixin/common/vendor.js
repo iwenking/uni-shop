@@ -9640,10 +9640,12 @@ exports.default = void 0;
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 34));
 var _cart = _interopRequireDefault(__webpack_require__(/*! @/store/cart.js */ 35));
+var _user = _interopRequireDefault(__webpack_require__(/*! @/store/user.js */ 191));
 _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   modules: {
-    'm_cart': _cart.default
+    'm_cart': _cart.default,
+    'm_user': _user.default
   }
 });
 var _default = store;
@@ -10950,6 +10952,21 @@ var _default = {
         findResult.goods_state = goods.goods_state;
         this.commit('m_cart/saveToStorage');
       }
+    },
+    updateGoodsCount: function updateGoodsCount(state, goods) {
+      var findResult = state.cart.find(function (x) {
+        return x.goods_id === goods.goods_id;
+      });
+      if (findResult) {
+        findResult.goods_count = goods.goods_count;
+        this.commit('m_cart/saveToStorage');
+      }
+    },
+    removeGoodsById: function removeGoodsById(state, goods_id) {
+      state.cart = state.cart.filter(function (x) {
+        return x.goods_id !== goods_id;
+      });
+      this.commit('m_cart/saveToStorage');
     }
   },
   getters: {
@@ -12727,6 +12744,215 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+/***/ }),
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */
+/*!**********************************************************************************************!*\
+  !*** E:/Vue/uni-shop/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpwxs.js ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var mpMixins = {};
+var is_pc = null;
+mpMixins = {
+  data: function data() {
+    return {
+      is_show: 'none'
+    };
+  },
+  watch: {
+    show: function show(newVal) {
+      this.is_show = this.show;
+    }
+  },
+  created: function created() {
+    this.swipeaction = this.getSwipeAction();
+    if (this.swipeaction && Array.isArray(this.swipeaction.children)) {
+      this.swipeaction.children.push(this);
+    }
+  },
+  mounted: function mounted() {
+    this.is_show = this.show;
+  },
+  methods: {
+    // wxs 中调用
+    closeSwipe: function closeSwipe(e) {
+      if (this.autoClose && this.swipeaction) {
+        this.swipeaction.closeOther(this);
+      }
+    },
+    change: function change(e) {
+      this.$emit('change', e.open);
+      if (this.is_show !== e.open) {
+        this.is_show = e.open;
+      }
+    },
+    appTouchStart: function appTouchStart(e) {
+      if (is_pc) return;
+      var clientX = e.changedTouches[0].clientX;
+      this.clientX = clientX;
+      this.timestamp = new Date().getTime();
+    },
+    appTouchEnd: function appTouchEnd(e, index, item, position) {
+      if (is_pc) return;
+      var clientX = e.changedTouches[0].clientX;
+      // fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
+      var diff = Math.abs(this.clientX - clientX);
+      var time = new Date().getTime() - this.timestamp;
+      if (diff < 40 && time < 300) {
+        this.$emit('click', {
+          content: item,
+          index: index,
+          position: position
+        });
+      }
+    },
+    onClickForPC: function onClickForPC(index, item, position) {
+      if (!is_pc) return;
+    }
+  }
+};
+var _default = mpMixins;
+exports.default = _default;
+
+/***/ }),
+/* 176 */
+/*!*************************************************************************************************!*\
+  !*** E:/Vue/uni-shop/uni_modules/uni-swipe-action/components/uni-swipe-action-item/bindingx.js ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var bindIngXMixins = {};
+var _default = bindIngXMixins;
+exports.default = _default;
+
+/***/ }),
+/* 177 */
+/*!************************************************************************************************!*\
+  !*** E:/Vue/uni-shop/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpother.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var otherMixins = {};
+var _default = otherMixins;
+exports.default = _default;
+
+/***/ }),
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */
+/*!*************************************!*\
+  !*** E:/Vue/uni-shop/store/user.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  namespaced: true,
+  state: function state() {
+    return {
+      address: JSON.parse(uni.getStorageSync('address') || '{}')
+    };
+  },
+  mutations: {
+    updateAdress: function updateAdress(state, address) {
+      state.address = address;
+      this.commit('m_user/saveAddressToStorage');
+    },
+    saveAddressToStorage: function saveAddressToStorage(state) {
+      uni.setStorageSync('address', JSON.stringify(state.address));
+    }
+  },
+  getters: {
+    addstr: function addstr(state) {
+      if (!state.address.provinceName) return '';
+      return state.address.provinceName + state.address.cityName + state.address.countyName + state.address.detailInfo;
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 ]]);

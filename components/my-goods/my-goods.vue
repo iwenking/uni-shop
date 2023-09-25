@@ -65,6 +65,8 @@ export default {
 	display: flex;
 	padding: 10px 5px;
 	border-bottom: 1px solid #f0f0f0;
+	width: 750rpx;
+	box-sizing: border-box;
 	.goods-item-left {
 		margin-right: 5px;
 		display: flex;
