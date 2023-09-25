@@ -24,38 +24,15 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.goods-item {
+.cart-title {
+  height: 40px;
   display: flex;
-  padding: 10px 5px;
-  border-bottom: 1px solid #f0f0f0;
-}
-.goods-item .goods-item-left {
-  margin-right: 5px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  padding-left: 5px;
+  border-bottom: 1px solid #efefef;
 }
-.goods-item .goods-item-left .goods-pic {
-  width: 100px;
-  height: 100px;
-  display: block;
-}
-.goods-item .goods-item-right {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.goods-item .goods-item-right .goods-name {
-  font-size: 13px;
-}
-.goods-item .goods-item-right .goods-info-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.goods-item .goods-item-right .goods-info-box .goods-price {
-  color: #c00000;
-  font-size: 16px;
+.cart-title .cart-title-text {
+  font-size: 14px;
+  margin-left: 10px;
 }
 

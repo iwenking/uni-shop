@@ -24,38 +24,44 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.goods-item {
+.uni-numbox {
   display: flex;
-  padding: 10px 5px;
-  border-bottom: 1px solid #f0f0f0;
+  flex-direction: row;
 }
-.goods-item .goods-item-left {
-  margin-right: 5px;
+.uni-numbox-btns {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  background-color: #f5f5f5;
 }
-.goods-item .goods-item-left .goods-pic {
-  width: 100px;
-  height: 100px;
-  display: block;
+.uni-numbox__value {
+  margin: 0 2px;
+  background-color: #f5f5f5;
+  width: 40px;
+  height: 26px;
+  text-align: center;
+  font-size: 14px;
+  border-left-width: 0;
+  border-right-width: 0;
+  color: #333;
 }
-.goods-item .goods-item-right {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-around;
+.uni-numbox__minus {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
-.goods-item .goods-item-right .goods-name {
-  font-size: 13px;
+.uni-numbox__plus {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
-.goods-item .goods-item-right .goods-info-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.uni-numbox--text {
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  color: #333;
 }
-.goods-item .goods-item-right .goods-info-box .goods-price {
-  color: #c00000;
-  font-size: 16px;
+.uni-numbox .uni-numbox--disabled {
+  color: #c0c0c0 !important;
 }
 
