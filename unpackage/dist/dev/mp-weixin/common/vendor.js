@@ -11022,7 +11022,9 @@ var _default = {
   namespaced: true,
   state: function state() {
     return {
-      address: JSON.parse(uni.getStorageSync('address') || '{}')
+      address: JSON.parse(uni.getStorageSync('address') || '{}'),
+      token: uni.getStorageSync('token') || "",
+      userinfo: JSON.parse(uni.getStorageSync('userinfo') || '{}')
     };
   },
   mutations: {
@@ -11032,6 +11034,20 @@ var _default = {
     },
     saveAddressToStorage: function saveAddressToStorage(state) {
       uni.setStorageSync('address', JSON.stringify(state.address));
+    },
+    updateUserInfo: function updateUserInfo(state, userinfo) {
+      state.userinfo = userinfo;
+      this.commit('m_user/saveUserInfoToStorage');
+    },
+    saveUserInfoToStorage: function saveUserInfoToStorage(state) {
+      uni.setStorageSync('userinfo', JSON.stringify(state.userinfo));
+    },
+    updateToken: function updateToken(state, token) {
+      state.token = token;
+      this.commit('m_user/saveTokenToStorage');
+    },
+    saveTokenToStorage: function saveTokenToStorage(state) {
+      uni.setStorageSync('token', JSON.stringify(state.token));
     }
   },
   getters: {
