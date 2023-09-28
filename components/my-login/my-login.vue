@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import {mapMutations} from "vuex"
+	import {mapMutations,mapState} from "vuex"
 	export default {
 		name:"my-login",
 		data() {
@@ -15,8 +15,11 @@
 				
 			};
 		},
+		computed:{
+			...mapState('m_user',['redirectInfo'])
+		},
 		methods:{
-			...mapMutations('m_user',['updateUserInfo','updateToken']),
+			...mapMutations('m_user',['updateUserInfo','updateToken','updataRedirectInfo']),
 			getUserInfo(e){
 				// console.log(e);
 				if(e.detail.errMsg !=='getUserInfo:ok') return uni.$showMsg("您取消了登录授权!")
@@ -36,8 +39,20 @@
 				}
 				const {data:loginResult} = await uni.$http.post("/api/public/v1/users/wxlogin",query)
 				this.updateToken(loginResult.meta.msg)
+				this.navigateBack()
 				if(loginResult.meta.status !== 200) return uni.$showMsg("登录失败!")
 				// uni.$showMsg("登录成功!")
+			},
+			navigateBack(){
+				console.log(this.redirectInfo,'navigateBack');
+				if(this.redirectInfo && this.redirectInfo.openType === 'switchTab'){
+					uni.switchTab({
+						url:this.redirectInfo.from,
+						complete:()=>{
+							this.updataRedirectInfo(null)
+						}
+					})
+				}
 			}
 		}
 	}

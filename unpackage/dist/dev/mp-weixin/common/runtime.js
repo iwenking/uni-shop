@@ -105,7 +105,7 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/my-search/my-search":1,"components/my-address/my-address":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1,"uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item":1,"components/my-goods/my-goods":1,"components/my-settle/my-settle":1,"components/my-login/my-login":1,"uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav":1,"uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar":1,"uni_modules/uni-tag/components/uni-tag/uni-tag":1,"uni_modules/uni-number-box/components/uni-number-box/uni-number-box":1};
+/******/ 		var cssChunks = {"components/my-search/my-search":1,"components/my-address/my-address":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1,"uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item":1,"components/my-goods/my-goods":1,"components/my-settle/my-settle":1,"components/my-login/my-login":1,"components/my-userinfo/my-userinfo":1,"uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav":1,"uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar":1,"uni_modules/uni-tag/components/uni-tag/uni-tag":1,"uni_modules/uni-number-box/components/uni-number-box/uni-number-box":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
