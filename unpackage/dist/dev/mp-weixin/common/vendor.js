@@ -1557,7 +1557,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8934,7 +8934,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8955,14 +8955,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9058,7 +9058,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"uni-shop","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -11686,7 +11686,9 @@ exports.default = _default;
 /* 111 */,
 /* 112 */,
 /* 113 */,
-/* 114 */
+/* 114 */,
+/* 115 */,
+/* 116 */
 /*!***************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \***************************************************************************/
@@ -12707,8 +12709,6 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 115 */,
-/* 116 */,
 /* 117 */,
 /* 118 */,
 /* 119 */,
@@ -12719,7 +12719,9 @@ exports.default = _default;
 /* 124 */,
 /* 125 */,
 /* 126 */,
-/* 127 */
+/* 127 */,
+/* 128 */,
+/* 129 */
 /*!**********************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpwxs.js ***!
   \**********************************************************************************************/
@@ -12797,7 +12799,7 @@ var _default = mpMixins;
 exports.default = _default;
 
 /***/ }),
-/* 128 */
+/* 130 */
 /*!*************************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-swipe-action/components/uni-swipe-action-item/bindingx.js ***!
   \*************************************************************************************************/
@@ -12816,7 +12818,7 @@ var _default = bindIngXMixins;
 exports.default = _default;
 
 /***/ }),
-/* 129 */
+/* 131 */
 /*!************************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpother.js ***!
   \************************************************************************************************/
@@ -12835,8 +12837,6 @@ var _default = otherMixins;
 exports.default = _default;
 
 /***/ }),
-/* 130 */,
-/* 131 */,
 /* 132 */,
 /* 133 */,
 /* 134 */,
@@ -12870,7 +12870,11 @@ exports.default = _default;
 /* 162 */,
 /* 163 */,
 /* 164 */,
-/* 165 */
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */
 /*!****************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/index.js ***!
   \****************************************************************************************/
@@ -12885,9 +12889,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 166));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 167));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 168));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 170));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 171));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 172));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -12896,7 +12900,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 166 */
+/* 170 */
 /*!***************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/en.json ***!
   \***************************************************************************************/
@@ -12906,7 +12910,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"shop\",\"uni-goods-nav.options.cart\":\"cart\",\"uni-goods-nav.buttonGroup.addToCart\":\"add to cart\",\"uni-goods-nav.buttonGroup.buyNow\":\"buy now\"}");
 
 /***/ }),
-/* 167 */
+/* 171 */
 /*!********************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hans.json ***!
   \********************************************************************************************/
@@ -12916,7 +12920,7 @@ module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"shop\",\"uni-good
 module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店铺\",\"uni-goods-nav.options.cart\":\"购物车\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入购物车\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即购买\"}");
 
 /***/ }),
-/* 168 */
+/* 172 */
 /*!********************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hant.json ***!
   \********************************************************************************************/
@@ -12926,14 +12930,14 @@ module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店铺\",\"uni-go
 module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-goods-nav.options.cart\":\"購物車\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入購物車\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即購買\"}");
 
 /***/ }),
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
 /* 173 */,
 /* 174 */,
 /* 175 */,
-/* 176 */
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */
 /*!******************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \******************************************************************************************/
@@ -12948,9 +12952,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 177));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 178));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 179));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 181));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 182));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 183));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -12959,7 +12963,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 177 */
+/* 181 */
 /*!*****************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \*****************************************************************************************/
@@ -12969,7 +12973,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
 
 /***/ }),
-/* 178 */
+/* 182 */
 /*!**********************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \**********************************************************************************************/
@@ -12979,7 +12983,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
 
 /***/ }),
-/* 179 */
+/* 183 */
 /*!**********************************************************************************************!*\
   !*** E:/Vue/uni-shop/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \**********************************************************************************************/

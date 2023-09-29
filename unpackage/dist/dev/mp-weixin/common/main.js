@@ -28,6 +28,11 @@ _requestMiniprogram.$http.beforeRequest = function (options) {
   uni.showLoading({
     title: "数据加载中..."
   });
+  if (options.url.indexOf("/my/") !== -1) {
+    options.header = {
+      Authorization: _store.default.state.m_user.token
+    };
+  }
 };
 _requestMiniprogram.$http.afterRequest = function () {
   uni.hideLoading();

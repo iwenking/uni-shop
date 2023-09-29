@@ -36,6 +36,7 @@ export default {
 			if (!this.addstr) return uni.$showMsg('请选择收货地址');
 			// if (!this.token) return uni.$showMsg('请先登录!');
 			if (!this.token) return this.delayNavigate();
+			this.payOrder();
 		},
 		delayNavigate() {
 			this.seconds = 3;
@@ -46,11 +47,11 @@ export default {
 					clearInterval(this.timer);
 					uni.switchTab({
 						url: '/pages/my/my',
-						success:()=>{
+						success: () => {
 							this.updataRedirectInfo({
-								openType:'switchTab',
-								from:"/pages/cart/cart"
-							})
+								openType: 'switchTab',
+								from: '/pages/cart/cart'
+							});
 						}
 					});
 					return;
@@ -65,12 +66,42 @@ export default {
 				mask: true,
 				duration: 15000
 			});
+		},
+		async payOrder() {
+			const orderInfo = {
+				// order_price:this.checkedGoodsAmount,
+				order_price: '0.01',
+				consignee_addr: this.addstr,
+				order_detail: '',
+				goods: this.cart
+					.filter((x) => x.goods_state)
+					.map((x) => ({
+						goods_id: x.goods_id,
+						goods_number: x.goods_count,
+						goods_price: x.goods_price
+					}))
+			};
+			const { data: res } = await uni.$http.post('/api/public/v1/my/orders/create', orderInfo);
+			if (res.meta.status !== 200) return uni.$showMsg('创建订单失败!');
+			const orderNumber = res.message.order_number;
+			const { data: res2 } = await uni.$http.post('/api/public/v1/my/orders/req_unifiedorder', { order_number: orderNumber });
+			if (res.meta.status !== 200) return uni.$showMsg('预订单生成失败!');
+			const payInfo = res2.message.pay;
+			const [err, succ] = await uni.requestPayment(payInfo);
+			if (err) return uni.$showMsg('订单未支付!');
+			const { data: res3 } = await uni.$http.post('/api/public/v1/my/orders/chkOrder', { order_number: orderNumber });
+			if (res3.meta.status !== 200) return uni.$showMsg('订单未支付!');
+			uni.showToast({
+				title: '订单支付完成',
+				icon: 'success'
+			});
 		}
 	},
 	computed: {
 		...mapGetters('m_cart', ['checkedCount', 'total', 'checkedGoodsAmount']),
 		...mapGetters('m_user', ['addstr']),
 		...mapState('m_user', ['token']),
+		...mapState('m_cart', ['cart']),
 		isFullCheck() {
 			return this.total === this.checkedCount;
 		}
